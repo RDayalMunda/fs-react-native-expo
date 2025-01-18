@@ -1,23 +1,21 @@
-import { StyleSheet, SafeAreaView } from "react-native";
+import { StyleSheet, SafeAreaView, Text } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Stack } from "expo-router";
 
-import Dashboard from "../../components/Dashboard/dashboard";
-import Game from "../../components/CardVerse/game";
+import Dashboard from "../components/Dashboard/dashboard";
+import Game from "../components/CardVerse/game";
+import { useAppContext } from "../context/AppContext";
 
 export default function HomeScreen() {
+  const { isLoggedIn } = useAppContext();
   return (
     <SafeAreaView style={styles.container}>
       <Stack.Screen options={headerOptions} />
       <StatusBar style="auto" />
-      {configuration.isLoggedIn ? <Game /> : <Dashboard />}
+      {isLoggedIn ? <Game /> : <Dashboard />}
     </SafeAreaView>
   );
 }
-
-const configuration = {
-  isLoggedIn: true, // if true Show Game Page else show Dashboard
-};
 
 const headerOptions = {
   // title: "Home",

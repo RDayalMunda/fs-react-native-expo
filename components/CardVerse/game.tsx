@@ -1,10 +1,12 @@
-import { Link } from "expo-router";
-import { SafeAreaView, Text } from "react-native";
+import { SafeAreaView, Text, Button } from "react-native";
+import { useAppContext } from "../../context/AppContext";
 
-export default function Dashboard() {
+export default function Game() {
+  const { isLoggedIn, toggleLogin } = useAppContext();
   return (
     <SafeAreaView>
-      <Text>This is the Game Page</Text>
+      <Text>Game Page</Text>
+      <Button title="Logout" onPress={toggleLogin} />
     </SafeAreaView>
   );
 }
